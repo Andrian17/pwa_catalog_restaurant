@@ -5,6 +5,7 @@ const { DATABASE_NAME, DATABASE_VERSION, OBJECT_STORE_NAME } = CONFIG;
 
 const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
   upgrade(database) {
+    // console.log(`Andri ${CONFIG.KEY}`);
     database.createObjectStore(OBJECT_STORE_NAME, { keyPath: 'id' });
   },
 });
@@ -14,7 +15,7 @@ const FavoriteMovieIdb = {
     if (!id) {
       return;
     }
-
+    // console.log(`Andri ${CONFIG.KEY}`);
     return (await dbPromise).get(OBJECT_STORE_NAME, id);
   },
   async getAllMovies() {
